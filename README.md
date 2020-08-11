@@ -24,11 +24,11 @@
 | image               | string     | null: false                   | 
 | name                | string     | null: false                   | 
 | explanation         | text       | null: false                   | 
-| category            | string     | null: false                   | 
-| status              | string     | null: false                   | 
-| who_cover_fee       | string     | null: false                   | 
-| where_delivery_from | string     | null: false                   | 
-| how_long            | string     | null: false                   | 
+| category            | integer    | null: false                   | 
+| status              | integer    | null: false                   | 
+| who_cover_fee       | integer    | null: false                   | 
+| where_delivery_from | integer    | null: false                   | 
+| how_long            | integer    | null: false                   | 
 | price               | int        | null: false                   | 
 ### Association
 - belongs_to :user
@@ -59,7 +59,7 @@
 | ------------------- | ---------- | ------------------------------| 
 | purchase_history    | references | null: false, foreign_key: true| 
 | postal_code         | string     | null: false                   | 
-| prefectures         | string     | null: false                   | 
+| prefectures         | integer    | null: false                   | 
 | city                | string     | null: false                   | 
 | address             | string     | null: false                   | 
 | building            | string     | null: true                    | 
