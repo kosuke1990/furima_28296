@@ -61,3 +61,11 @@
 | phone_number        | string     | null: false                   | 
 ### Association
 - belongs_to :purchase_history
+
+コメント欄をご確認願います
+指摘内容を確認したい為、修正は行っておりません
+
+ご返信ありがとうございます。
+それらのカラムは元々作ってましたが、先の指摘で
+activehashを使うので必要ありませんという指摘をいただき削除しました
+どちらが正しいでしょうか?
