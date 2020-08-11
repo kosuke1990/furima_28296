@@ -24,8 +24,12 @@
 | image               | string     | null: false                   | 
 | name                | string     | null: false                   | 
 | explanation         | text       | null: false                   | 
+| category            | string     | null: false                   | 
+| status              | string     | null: false                   | 
+| who_cover_fee       | string     | null: false                   | 
+| where_delivery_from | string     | null: false                   | 
+| how_long            | string     | null: false                   | 
 | price               | int        | null: false                   | 
-| sell_status         | string     | null: false                   | 
 ### Association
 - belongs_to :user
 - has_one :item_additional
@@ -55,17 +59,10 @@
 | ------------------- | ---------- | ------------------------------| 
 | purchase_history    | references | null: false, foreign_key: true| 
 | postal_code         | string     | null: false                   | 
+| prefectures         | string     | null: false                   | 
 | city                | string     | null: false                   | 
 | address             | string     | null: false                   | 
 | building            | string     | null: true                    | 
 | phone_number        | string     | null: false                   | 
 ### Association
 - belongs_to :purchase_history
-
-コメント欄をご確認願います
-指摘内容を確認したい為、修正は行っておりません
-
-ご返信ありがとうございます。
-それらのカラムは元々作ってましたが、先の指摘で
-activehashを使うので必要ありませんという指摘をいただき削除しました
-どちらが正しいでしょうか?
