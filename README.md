@@ -20,7 +20,7 @@
 ## items テーブル
 | Column              | Type       | Options                       | 
 | ------------------- | ---------- | ------------------------------| 
-| user_id             | references | null: false, foreign_key: true| 
+| user                | references | null: false, foreign_key: true| 
 | image               | string     | null: false                   | 
 | name                | string     | null: false                   | 
 | explanation         | text       | null: false                   | 
@@ -33,8 +33,8 @@
 ## purchase_histories テーブル
 | Column    | Type        | Options                        | 
 | --------- | ----------- | ------------------------------ | 
-| user_id   | references  | null: false, foreign_key: true | 
-| item_id   | references  | null: false, foreign_key: true | 
+| user      | references  | null: false, foreign_key: true | 
+| item      | references  | null: false, foreign_key: true | 
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -43,7 +43,7 @@
 ## item_additional テーブル
 | Column     | Type       | Options                        | 
 | ---------- | ---------- | ------------------------------ | 
-| item_id    | references | null: false, foreign_key: true | 
+| item       | references | null: false, foreign_key: true | 
 | comment    | string     | null: true                     | 
 | good_point | int        | null: true                     | 
 ### Association
@@ -52,7 +52,7 @@
 ## address テーブル
 | Column              | Type       | Options                       | 
 | ------------------- | ---------- | ------------------------------| 
-| purchase_history_id | references | null: false, foreign_key: true| 
+| purchase_history    | references | null: false, foreign_key: true| 
 | postal_code         | string     | null: false                   | 
 | city                | string     | null: false                   | 
 | address             | string     | null: false                   | 
