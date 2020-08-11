@@ -25,6 +25,7 @@
 | name                | string     | null: false                   | 
 | explanation         | text       | null: false                   | 
 | price               | int        | null: false                   | 
+| sell_status         | string     | null: false                   | 
 ### Association
 - belongs_to :user
 - has_one :item_additional
