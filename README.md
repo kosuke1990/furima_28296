@@ -35,10 +35,6 @@
 | --------- | ----------- | ------------------------------ | 
 | user_id   | references  | null: false, foreign_key: true | 
 | item_id   | references  | null: false, foreign_key: true | 
-| item_name | string      | null: false                    | 
-| customer  | string      | null: false                    | 
-| price     | int         | null: false                    | 
-| status    | string      | null: false                    | 
 ### Association
 - belongs_to :user
 - belongs_to :item
