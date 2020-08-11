@@ -49,8 +49,8 @@
 | Column     | Type       | Options                        | 
 | ---------- | ---------- | ------------------------------ | 
 | item       | references | null: false, foreign_key: true | 
-| comment    | string     | null: true                     | 
-| good_point | int        | null: true                     | 
+| comment    | string     |                                | 
+| good_point | int        |                                | 
 ### Association
 - belongs_to :item
 
@@ -62,7 +62,7 @@
 | prefectures         | integer    | null: false                   | 
 | city                | string     | null: false                   | 
 | address             | string     | null: false                   | 
-| building            | string     | null: true                    | 
+| building            | string     |                               | 
 | phone_number        | string     | null: false                   | 
 ### Association
 - belongs_to :purchase_history
