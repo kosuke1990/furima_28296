@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   with_options presence: true do
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}+\z/i, message: 'Include both letters and numbers' }
+    # 指摘内容がわかりませんでした。githubのコメント内容をご確認願います
     validates :nickname, presence: true
     validates :email, presence: true
     validates :first_name_zenkaku, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'Full-width characters' }
