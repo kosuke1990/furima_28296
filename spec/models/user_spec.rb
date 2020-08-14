@@ -44,9 +44,6 @@ RSpec.describe User, type: :model do
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
-      it 'メールアドレスは@を含む必要があること' do
-        # ブラウザ上でエラーメッセージが出力されるので対応不要
-      end
       it 'パスワードが入力されていないとエラーメッセージが出力される' do
         @user.password = ''
         @user.valid?
