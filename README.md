@@ -29,7 +29,7 @@
 | who_cover_fee       | integer    | null: false                   | 
 | where_delivery_from | integer    | null: false                   | 
 | how_long            | integer    | null: false                   | 
-| price               | int        | null: false                   | 
+| price               | integer    | null: false                   | 
 ### Association
 - belongs_to :user
 - has_one :item_additional
@@ -50,7 +50,7 @@
 | ---------- | ---------- | ------------------------------ | 
 | item       | references | null: false, foreign_key: true | 
 | comment    | string     |                                | 
-| good_point | int        |                                | 
+| good_point | integer    |                                | 
 ### Association
 - belongs_to :item
 
