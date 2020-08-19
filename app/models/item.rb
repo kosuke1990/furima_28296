@@ -8,7 +8,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :explanation
-    validates :price, numericality: {less_than: 10000000, greater_than: 299}
-    validates :category_id, :status_id, :who_cover_fee_id, :where_delivery_from_id, :how_long_id, numericality: { other_than: 1, message: "Select" }  
+    validates :price, numericality: { less_than: 10_000_000, greater_than: 299 }
+    validates :category_id, :status_id, :who_cover_fee_id, :where_delivery_from_id, :how_long_id, numericality: { other_than: 1, message: 'Select' }
   end
 end

@@ -9,9 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def create
@@ -22,19 +20,18 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
   private
 
   def set_active_hash
-    @categories = Category.all.order("id ASC")
-    @statuses = Status.all.order("id ASC")
-    @who_cover_fee = WhoCoverFee.all.order("id ASC")
-    @where_delivery_from = WhereDeliveryFrom.all.order("id ASC")
-    @how_long = HowLong.all.order("id ASC")
+    @categories = Category.all.order('id ASC')
+    @statuses = Status.all.order('id ASC')
+    @who_cover_fee = WhoCoverFee.all.order('id ASC')
+    @where_delivery_from = WhereDeliveryFrom.all.order('id ASC')
+    @how_long = HowLong.all.order('id ASC')
   end
 
   def item_params
     params.require(:item).permit(:image, :name, :explanation, :category_id, :status_id, :who_cover_fee_id, :where_delivery_from_id, :how_long_id, :price).merge(user_id: current_user.id)
   end
-  
 end
