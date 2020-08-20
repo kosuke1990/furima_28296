@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_active_hash, only: [:new, :create, :show]
+  before_action :set_active_hash, only: [:new, :create, :show, :edit]
   def index
     @items = Item.all
     @purchase_history = PurchaseHistory.all
@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+  end
+
+  def edit
+    @item = Item.find(params[:id])
   end
 
   def move_to_index
