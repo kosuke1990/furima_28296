@@ -19,7 +19,7 @@ RSpec.describe Item, type: :model do
     end
     context '新規投稿商品がうまくいかない時' do
       it '出品画像がない時にエラーメッセージが出力されること' do
-        @item.image = ''
+        @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
