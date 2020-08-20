@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
+  before_action :move_to_index, except: [:index, :show]
   before_action :set_active_hash, only: [:new, :create, :show]
   def index
     @items = Item.all
