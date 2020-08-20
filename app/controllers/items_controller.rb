@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_active_hash, only: [:new, :create, :show]
   def index
     @items = Item.all
+    @purchase_history = PurchaseHistory.all
   end
 
   def new
@@ -24,6 +25,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @purchase_history = PurchaseHistory.find_by(item_id: params[:id])
   end
 
   private
