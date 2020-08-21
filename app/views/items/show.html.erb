@@ -22,22 +22,17 @@
         (税込) 送料込み
       </span>
     </div>
-    <%# ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
     <% if !current_user.nil? %>
       <% if current_user.id == @item.user_id %>
         <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
         <%= link_to '削除', "#", method: :delete, class:'item-destroy' %>
       <% else %>
-        <%# 商品が売れていない場合はこちらを表示しましょう %>
         <% if !@purchase_history %>
           <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
         <% end %>
       <% end %>
     <% end %>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
-
-    <%# //ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
 
     <div class="item-explain-box">
       <span><%= @item.explanation %></span>
@@ -50,23 +45,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @categories.all_records[@item.category_id][:name] %></td>
+          <td class="detail-value"><%= @categories.all_records[@item.category_id - 1][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @statuses.all_records[@item.status_id][:name] %></td>
+          <td class="detail-value"><%= @statuses.all_records[@item.status_id - 1][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @who_cover_fee.all_records[@item.who_cover_fee_id][:name] %></td>
+          <td class="detail-value"><%= @who_cover_fee.all_records[@item.who_cover_fee_id - 1][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @where_delivery_from.all_records[@item.where_delivery_from_id][:name] %></td>
+          <td class="detail-value"><%= @where_delivery_from.all_records[@item.where_delivery_from_id - 1][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @how_long.all_records[@item.how_long_id][:name] %></td>
+          <td class="detail-value"><%= @how_long.all_records[@item.how_long_id - 1][:name] %></td>
         </tr>
       </tbody>
     </table>
