@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
+  before_action :find_item, only: [:edit, :update, :show]
   before_action :set_active_hash, only: [:new, :create, :show, :edit]
+
   def index
     @items = Item.all
     @purchase_history = PurchaseHistory.all
@@ -11,13 +13,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
-    if item.save
+    @item.update(item_params)
+    if @item.save
       redirect_to root_path
     else
       render :edit
@@ -38,11 +38,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @purchase_history = PurchaseHistory.find_by(item_id: params[:id])
   end
 
   private
+
+  def find_item
+    @item = Item.find(params[:id])
+  end
 
   def set_active_hash
     @categories = Category.all.order('id ASC')
