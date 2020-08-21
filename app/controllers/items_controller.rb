@@ -1,12 +1,27 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index]
-  before_action :set_active_hash, only: [:new, :create]
+  before_action :move_to_index, except: [:index, :show]
+  before_action :find_item, only: [:edit, :update, :show]
+  before_action :set_active_hash, only: [:new, :create, :show, :edit]
+
   def index
     @items = Item.all
+    @purchase_history = PurchaseHistory.all
   end
 
   def new
     @item = Item.new
+  end
+
+  def edit
+  end
+
+  def update
+    @item.update(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def move_to_index
@@ -22,7 +37,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @purchase_history = PurchaseHistory.find_by(item_id: params[:id])
+  end
+
   private
+
+  def find_item
+    @item = Item.find(params[:id])
+  end
 
   def set_active_hash
     @categories = Category.all.order('id ASC')
