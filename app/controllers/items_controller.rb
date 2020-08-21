@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :find_item, only: [:edit, :update, :show]
+  before_action :find_item, only: [:edit, :update, :show, :destroy]
   before_action :set_active_hash, only: [:new, :create, :show, :edit, :update]
 
   def index
@@ -39,6 +39,14 @@ class ItemsController < ApplicationController
 
   def show
     @purchase_history = PurchaseHistory.find_by(item_id: params[:id])
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
