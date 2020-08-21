@@ -50,23 +50,23 @@
         </tr>
         <tr>
           <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @categories.all_records[@item.category_id - 1][:name] %></td>
+          <td class="detail-value"><%= @categories.all_records[@item.category_id][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @statuses.all_records[@item.status_id - 1][:name] %></td>
+          <td class="detail-value"><%= @statuses.all_records[@item.status_id][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @who_cover_fee.all_records[@item.who_cover_fee_id - 1][:name] %></td>
+          <td class="detail-value"><%= @who_cover_fee.all_records[@item.who_cover_fee_id][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @where_delivery_from.all_records[@item.where_delivery_from_id - 1][:name] %></td>
+          <td class="detail-value"><%= @where_delivery_from.all_records[@item.where_delivery_from_id][:name] %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @how_long.all_records[@item.how_long_id - 1][:name] %></td>
+          <td class="detail-value"><%= @how_long.all_records[@item.how_long_id][:name] %></td>
         </tr>
       </tbody>
     </table>
