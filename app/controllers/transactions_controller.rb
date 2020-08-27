@@ -6,35 +6,28 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @purchase_history = PurchaseHistory.new(purchase_history_params)
-    if @purchase_history.valid?
-      @purchase_history.save
+    ActiveRecord::Base.transaction do
+      @item = Item.find(params[:item_id])
+      @transaction = Transaction.new
+      @prefecture = WhereDeliveryFrom.all.order('id ASC')
+      # 保存
+      @purchase_history = PurchaseHistory.new(purchase_history_params)
+      @purchase_history.save!
+      @transaction = Transaction.new(transaction_params)
+      if @transaction.valid?
+        @transaction.save!
+        redirect_to root_path
+      else
+        render :index
+      end
     end
-
-    @transaction = Transaction.new(transaction_params)
-    @item = Item.find(params[:item_id])
-    @prefecture = WhereDeliveryFrom.all.order('id ASC')
-    
-    
-    if @transaction.valid?
-      pay_item
-      @purchase_history.save
-      binding.pry
-      @transaction.save
-      return redirect_to root_path
-    else
-      render 'index'
-    end
-    
-    binding.pry
-    
+    rescue => e
+      # render plain: e.message
+      render :index
   end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
-    
-    binding.pry
-    
     Payjp::Charge.create(
       amount: transaction_params[:price],  # 商品の値段
       card: transaction_params[:token],    # カードトークン
@@ -44,7 +37,7 @@ class TransactionsController < ApplicationController
   
   private
   def transaction_params
-    params.require(:transaction).permit(:price, :postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(purchase_history_id: @purchase_history.id)
+    params.require(:transaction).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(purchase_history_id: @purchase_history.id)
   end
 
   def purchase_history_params

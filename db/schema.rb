@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_08_24_021248) do
 
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "purchase_history_id"
-    t.integer "price", null: false
     t.string "postal_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
