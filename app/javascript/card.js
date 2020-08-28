@@ -8,10 +8,10 @@ const pay = () => {
     const formData = new FormData(formResult);
 
     const card = {
-      number: formData.get("transaction[number]"),
-      cvc: formData.get("transaction[cvc]"),
-      exp_month: formData.get("transaction[exp_month]"),
-      exp_year: `20${formData.get("transaction[exp_year]")}`,
+      number: formData.get("purchase_address[number]"),
+      cvc: formData.get("purchase_address[cvc]"),
+      exp_month: formData.get("purchase_address[exp_month]"),
+      exp_year: `20${formData.get("purchase_address[exp_year]")}`,
     };
     console.log(console.log(card))
     console.log(...formData.entries());

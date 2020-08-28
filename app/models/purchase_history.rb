@@ -1,5 +1,5 @@
 class PurchaseHistory < ApplicationRecord
-  has_one :trade, class_name:"Transaction", dependent: :destroy
+  has_one :address, dependent: :destroy
   belongs_to :user
   belongs_to :item
 end

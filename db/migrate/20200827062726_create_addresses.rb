@@ -1,6 +1,6 @@
-class CreateTransactions < ActiveRecord::Migration[6.0]
+class CreateAddresses < ActiveRecord::Migration[6.0]
   def change
-    create_table :transactions do |t|
+    create_table :addresses do |t|
       t.references :purchase_history, foreign_key: true
       t.string :postal_code, null: false
       t.integer :prefecture_id, null: false
