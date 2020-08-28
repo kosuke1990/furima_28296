@@ -7,7 +7,7 @@ RSpec.describe PurchaseAddress, type: :model do
     end
     context '商品購入がうまくいく時' do
       it '建物名がブランクでも購入できること' do
-        @transaction.building = ""
+        @transaction.building = ''
         expect(@transaction).to be_valid
       end
       it '住所がブランクでも購入できること' do
@@ -23,7 +23,7 @@ RSpec.describe PurchaseAddress, type: :model do
       it '都道府県が空だと保存できないこと' do
         @transaction.prefecture_id = 1
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("Prefecture Select")
+        expect(@transaction.errors.full_messages).to include('Prefecture Select')
       end
       it '市区町村が空だと保存できないこと' do
         @transaction.city = nil
@@ -41,9 +41,9 @@ RSpec.describe PurchaseAddress, type: :model do
         expect(@transaction.errors.full_messages).to include("Phone number can't be blank")
       end
       it '郵便番号にハイフンがないとエラーが出力されること' do
-        @transaction.postal_code = 1231234
+        @transaction.postal_code = 1_231_234
         @transaction.valid?
-        expect(@transaction.errors.full_messages).to include("Postal code Input correctly")
+        expect(@transaction.errors.full_messages).to include('Postal code Input correctly')
       end
     end
   end

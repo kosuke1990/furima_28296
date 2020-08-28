@@ -32,6 +32,10 @@
           <%= link_to '購入画面に進む', item_transactions_path(@item.id), class:"item-red-btn"%>
         <% end %>
       <% end %>
+    <% else %>
+        <% if !@purchase_history %>
+          <%= link_to '購入画面に進む', item_transactions_path(@item.id), class:"item-red-btn"%>
+        <% end %>
     <% end %>
 
     <div class="item-explain-box">
